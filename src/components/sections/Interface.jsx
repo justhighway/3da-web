@@ -1,15 +1,17 @@
 import FirstSection from "./FirstSection";
 import SecondSection from "./SecondSection";
 import Section from "./Section";
+import ThirdSection from "./ThirdSection";
 
 export default function Interface() {
   return (
     <div>
       <FirstSection />
       <SecondSection />
-      <Section>
+      {/* <Section>
         <h1>사업</h1>
-      </Section>
+      </Section> */}
+      <ThirdSection />
       <Section>
         <h1>연락</h1>
       </Section>

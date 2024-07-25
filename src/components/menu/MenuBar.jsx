@@ -36,8 +36,9 @@ export default function MenuBar({
       >
         <div className="flex-1 flex items-start justify-center flex-col gap-6 p-8">
           <MenuTabs label="Main" onClick={() => onSectionChange(0)} />
-          <MenuTabs label="About" onClick={() => onSectionChange(1)} />
+          <MenuTabs label="About Us" onClick={() => onSectionChange(1)} />
           <MenuTabs label="Business" onClick={() => onSectionChange(2)} />
+          <MenuTabs label="Contact Us" onClick={() => onSectionChange(3)} />
         </div>
       </div>
     </>
