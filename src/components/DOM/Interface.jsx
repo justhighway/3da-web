@@ -1,9 +1,11 @@
+// src/components/DOM/Interface.jsx:
+
 import MainSection from "./MainSection";
 import Section from "./Section";
 
 export default function Interface() {
   return (
-    <div className="mx-12">
+    <div>
       <MainSection />
       <Section>
         <h1>home</h1>

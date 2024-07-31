@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 
-export default function Section({ children }) {
+export default function Section({ children, className }) {
   return (
     <motion.section
+      className={`flex flex-col w-screen h-screen ${className}`}
       initial={{
         opacity: 0,
         y: 50,
@@ -17,7 +18,6 @@ export default function Section({ children }) {
           delay: 0.2,
         },
       }}
-      className="flex flex-col items-center justify-center w-screen h-screen p-8 mx-auto max-w-screen-2xl"
     >
       {children}
     </motion.section>
