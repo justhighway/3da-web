@@ -4,7 +4,7 @@
 import { useGLTF } from "@react-three/drei";
 
 export default function Building() {
-  const { scene } = useGLTF("/models/building2.glb");
+  const { scene } = useGLTF("/models/background/building2.glb");
 
   return (
     <>

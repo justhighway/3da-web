@@ -4,7 +4,7 @@
 import { useGLTF } from "@react-three/drei";
 
 export default function City() {
-  const { scene } = useGLTF("/models/tiny_city.glb");
+  const { scene } = useGLTF("/models/background/tiny_city.glb");
   console.log("scene: ", scene);
 
   return (

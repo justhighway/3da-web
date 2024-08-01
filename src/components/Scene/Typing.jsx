@@ -5,7 +5,7 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 
 export default function Typing() {
-  const { scene, animations } = useGLTF("/models/typing.glb");
+  const { scene, animations } = useGLTF("/models/entity/typing.glb");
   const typingRef = useRef(null);
   const { actions } = useAnimations(animations, typingRef);
 

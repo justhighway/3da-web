@@ -7,9 +7,7 @@ export default function Interface() {
   return (
     <div>
       <MainSection />
-      <Section>
-        <h1>home</h1>
-      </Section>
+      <Section />
       <Section>
         <h1>home</h1>
       </Section>

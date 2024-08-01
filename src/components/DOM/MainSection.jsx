@@ -16,7 +16,7 @@ export default function MainSection() {
           Partner
         </h1>
         <h2 className="mt-12 text-3xl font-bold text-center text-white drop-shadow-lg">
-          3D Automation
+          3Dautomation
         </h2>
       </div>
     </Section>

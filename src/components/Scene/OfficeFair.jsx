@@ -6,7 +6,7 @@ import { MeshStandardMaterial } from "three";
 import * as THREE from "three";
 
 export default function OfficeFair() {
-  const { scene } = useGLTF("/models/officeFair.glb");
+  const { scene } = useGLTF("/models/background/officeFair.glb");
 
   useEffect(() => {
     // 모델의 각 메시에 대해 재질을 적용하고 그림자 설정

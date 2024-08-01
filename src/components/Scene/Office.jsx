@@ -5,7 +5,7 @@ import { useGLTF } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 
 export default function Office() {
-  const { scene } = useGLTF("/models/office.glb");
+  const { scene } = useGLTF("/models/background/office.glb");
 
   useEffect(() => {
     // 모델의 각 메시에 대해 재질을 적용하고 그림자 설정
