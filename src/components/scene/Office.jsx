@@ -18,12 +18,11 @@ export default function Office() {
 
   return (
     <>
-      <directionalLight intensity={5} position={[2, 10, 7]} />
       <primitive
         object={scene}
-        scale={0.026}
-        position={[2.1, 0.999, 2.59]}
-        rotation={[0, -Math.PI / 3 + 0.1, 0]}
+        scale={0.0115}
+        position={[-0.55, 0.7648, 2.228]}
+        rotation={[0, -Math.PI / 2, 0]}
       />
     </>
   );

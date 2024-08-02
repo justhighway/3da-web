@@ -9,10 +9,10 @@ export default function Building() {
   return (
     <>
       <primitive
-        scale={4}
+        scale={3}
         object={scene}
-        position={[2, 0, 3]}
-        rotation={[0, Math.PI / 5, 0]}
+        position={[-0.85, -0.075, 2.5]}
+        rotation={[0, 0, 0]}
       />
     </>
   );

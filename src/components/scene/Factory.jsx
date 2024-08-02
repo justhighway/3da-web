@@ -2,16 +2,16 @@
 /* eslint-disable react/no-unknown-property */
 
 import { useGLTF } from "@react-three/drei";
-import * as THREE from "three";
+
 export default function Factory() {
   const { scene } = useGLTF("/models/factory/factory.glb");
 
   return (
     <primitive
-      scale={0.05}
+      scale={0.04}
       object={scene}
-      position={[-2.5, -0.06, -5.5]}
-      rotation={[0, THREE.MathUtils.degToRad(216), 0]}
+      position={[0.8, 0, -6]}
+      rotation={[0, Math.PI, 0]}
     />
   );
 }

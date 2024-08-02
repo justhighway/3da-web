@@ -5,13 +5,13 @@ import { useGLTF } from "@react-three/drei";
 
 export default function City() {
   const { scene } = useGLTF("/models/background/tiny_city.glb");
-  console.log("scene: ", scene);
 
   return (
     <primitive
       object={scene}
-      position={[1, 1.5, 0.5]}
-      rotation={[0, Math.PI / 5, 0]}
+      scale={1}
+      position={[0, 1.5, 0]}
+      rotation={[0, 0, 0]}
     />
   );
 }

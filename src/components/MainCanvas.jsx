@@ -17,7 +17,7 @@ export default function MainCanvas() {
         shadows="soft"
         camera={{
           aspect: aspectRatio,
-          position: [-4, 2, -4],
+          position: [5, 5, 5],
           far: 30,
           near: 0.0001,
           fov: 90,
@@ -29,6 +29,8 @@ export default function MainCanvas() {
           <MainScene />
         </Suspense>
         <OrbitControls />
+        <gridHelper args={[20, 20]} />
+        <axesHelper args={[5]} />
       </Canvas>
       <CustomLoader />
     </>

@@ -5,7 +5,6 @@ import { useRef, useState, useEffect } from "react";
 import { Scroll, ScrollControls, Sky } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import ScrollManager from "./utils/ScrollManager";
-import City from "./scene/City";
 import Interface from "./DOM/Interface";
 import Building from "./scene/Building";
 import Office from "./scene/Office";
@@ -18,6 +17,8 @@ import ParkingSlot from "./scene/ParkingSlot";
 import Car1 from "./scene/Cars/Car1";
 import Car2 from "./scene/Cars/Car2";
 import Conveyer from "./scene/Conveyer";
+import City from "./scene/City";
+import BaseGround from "./scene/BaseGround";
 
 export default function MainScene() {
   const groupRef = useRef(null);
@@ -50,7 +51,8 @@ export default function MainScene() {
         />
         <ambientLight intensity={3} />
         <Sky />
-        <group ref={groupRef} position={[2, 1, 0.1]} rotation={[0, 0.1, 0]}>
+        <BaseGround />
+        <group ref={groupRef}>
           <City />
           <Building />
           <Office />
