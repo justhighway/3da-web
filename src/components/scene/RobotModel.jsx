@@ -1,34 +1,25 @@
-/* eslint-disable react/no-unknown-property */
 import { useGLTF } from "@react-three/drei";
-import gsap from "gsap";
-import { useThree } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion-3d";
+import useSceneRotationLeva from "@hooks/useSceneRotationLeva";
+import useScenePositionLeva from "@hooks/useScenePositionLeva";
 
-export default function RobotModel({ section }) {
-  const { scene } = useGLTF("models/samdol.glb");
+export default function RobotModel() {
   const robotRef = useRef(null);
-  const { camera } = useThree();
+  const { scene } = useGLTF("models/samdol.glb");
 
-  useEffect(() => {
-    gsap.fromTo(
-      camera.position,
-      { x: -30, y: 600, z: 20 },
-      { duration: 4, x: 4, y: 1, z: 8 }
-    );
-  }, [camera]);
+  useSceneRotationLeva(robotRef);
+  const { positionX, positionY, positionZ } = useScenePositionLeva(robotRef);
 
   return (
-    <>
-      <ambientLight intensity={2} />
-      <directionalLight intensity={3} position={[0, 3, 3]} />
-      <motion.group ref={robotRef}>
-        <primitive
-          object={scene}
-          position={[2, -2, 2]}
-          rotation={[0, Math.PI - 0.3, -0.1]}
-        />
-      </motion.group>
-    </>
+    <motion.mesh
+      ref={robotRef}
+      initial={{ scale: 4, y: -10 }}
+      animate={{ scale: 4.5, y: 0 }}
+      transition={{ duration: 1.5, type: "spring", delay: 0.5 }}
+    >
+      <primitive object={scene} position={[positionX, positionY, positionZ]} />
+      <axesHelper args={[10]} />
+    </motion.mesh>
   );
 }

@@ -12,7 +12,7 @@ export default function Interface() {
         <h1>사업</h1>
       </Section> */}
       <ThirdSection />
-      <Section>
+      <Section hasMotion={false}>
         <h1>연락</h1>
       </Section>
       <Section>

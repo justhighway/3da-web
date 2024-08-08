@@ -2,9 +2,9 @@ import Section from "./Section";
 
 export default function ThirdSection() {
   return (
-    <Section position="center">
+    <Section position="center" hasMotion={false}>
       <h1 className="text-5xl font-bold">About Us</h1>
-      <span className="text-lg mt-4">
+      <span className="mt-4 text-lg">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget
         nullam non. Quis hendrerit dolor magna eget est lorem ipsum dolor sit.

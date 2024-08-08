@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import classNames from "classnames";
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 
 export default function Section({
   size = "large",
@@ -20,7 +20,9 @@ export default function Section({
     "items-end": position === "right",
   });
 
-  const SectionTag = hasMotion ? motion.section : "section";
+  const commonProps = {
+    className: `h-screen w-screen p-20 max-w-screen-2xl flex flex-col justify-center ${positionClass} ${widthClass}`,
+  };
 
   const motionProps = hasMotion
     ? {
@@ -28,18 +30,24 @@ export default function Section({
         whileInView: {
           opacity: 1,
           y: 0,
-          transition: { duration: 1, delay: 0.6 },
+          transition: { duration: 1, delay: 0.4 },
         },
         viewport: { once: true },
       }
     : {};
 
+  const SectionElement = hasMotion ? motion.section : "section";
+
   return (
-    <SectionTag
-      className={`h-[100vh] p-20 max-w-screen-2xl flex flex-col justify-center ${positionClass} ${widthClass}`}
-      {...motionProps}
-    >
+    <SectionElement {...commonProps} {...motionProps}>
       {children}
-    </SectionTag>
+    </SectionElement>
   );
 }
+
+Section.propTypes = {
+  size: PropTypes.oneOf(["large", "medium", "small"]),
+  position: PropTypes.oneOf(["left", "center", "right"]),
+  hasMotion: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
