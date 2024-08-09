@@ -9,9 +9,9 @@ export default function Section({
   children,
 }) {
   const widthClass = classNames({
-    "w-[100vw]": size === "large",
-    "w-[50vw]": size === "medium",
-    "w-[25vw]": size === "small",
+    "flex w-[100vw]": size === "large",
+    "flex w-[50vw]": size === "medium",
+    "flex w-[25vw]": size === "small",
   });
 
   const positionClass = classNames({
@@ -21,7 +21,7 @@ export default function Section({
   });
 
   const commonProps = {
-    className: `h-screen w-screen p-20 max-w-screen-2xl flex flex-col justify-center ${positionClass} ${widthClass}`,
+    className: `h-screen p-20 max-w-screen-2xl flex flex-col justify-center ${positionClass} ${widthClass}`,
   };
 
   const motionProps = hasMotion

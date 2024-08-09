@@ -7,6 +7,8 @@ import { Leva } from "leva";
 import useCameraPositionLeva from "@hooks/useCameraPositionLeva";
 import useCameraRotationLeva from "@hooks/useCameraRotationLeva";
 import NavBar from "@components/NavBar";
+import { MotionConfig } from "framer-motion";
+import { OrbitControls } from "@react-three/drei";
 
 const MainCanvas = () => {
   const [section, setSection] = useState(0);
@@ -30,6 +32,7 @@ const MainCanvas = () => {
         <gridHelper />
         <ResponsiveCanvas />
         <CameraController />
+        <OrbitControls />
       </Canvas>
       <NavBar
         onSectionChange={setSection}
