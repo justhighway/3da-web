@@ -12,7 +12,7 @@ export default function MenuButton({
     <>
       <button
         onClick={() => setIsMenuOpened(!isMenuOpened)}
-        className="relative z-30 flex flex-col items-center justify-center p-3 bg-blue-800 rounded-md w-11 h-11"
+        className="z-30 p-3 bg-blue-800 rounded-md h-11 w-11"
       >
         <div
           className={`bg-white h-0.5 rounded-md w-full transition-all ${

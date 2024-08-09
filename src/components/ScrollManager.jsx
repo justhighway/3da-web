@@ -18,7 +18,7 @@ export default function ScrollManager({ section, onSectionChange }) {
   useEffect(() => {
     if (scrollData.el) {
       gsap.to(scrollData.el, {
-        duration: 0.5,
+        duration: 1,
         scrollTop: section * scrollData.el.clientHeight,
         onStart: () => {
           isAnimating.current = true;

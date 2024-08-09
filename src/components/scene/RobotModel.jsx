@@ -8,8 +8,8 @@ export default function RobotModel({ section }) {
   const robotRef = useRef(null);
   const { scene } = useGLTF("models/samdol.glb");
 
-  useSceneRotationLeva(robotRef);
-  const { positionX, positionY, positionZ } = useScenePositionLeva(robotRef);
+  // useSceneRotationLeva(robotRef);
+  // const { positionX, positionY, positionZ } = useScenePositionLeva(robotRef);
 
   return (
     <motion.group
@@ -27,7 +27,7 @@ export default function RobotModel({ section }) {
         x: { duration: 1.5, type: "spring", delay: 0.3 },
       }}
     >
-      <primitive object={scene} position={[positionX, positionY, positionZ]} />
+      <primitive object={scene} position={[0.3, 0, 0]} />
       <axesHelper args={[10]} />
     </motion.group>
   );

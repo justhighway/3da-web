@@ -1,9 +1,9 @@
 import { Scroll, ScrollControls } from "@react-three/drei";
 import ScrollManager from "./ScrollManager";
 import Interface from "./DOM/Interface";
-import RobotModel from "./Scene/RobotModel";
-import Office from "./Scene/Office";
-import RobotModelClone from "./Scene/RobotModelClone";
+import RobotModel from "./scene/RobotModel";
+import Office from "./scene/Office";
+import RobotModelClone from "./scene/RobotModelClone";
 
 export default function MainScene({ section, setSection }) {
   return (
@@ -13,6 +13,7 @@ export default function MainScene({ section, setSection }) {
         <Scroll html>
           <Interface />
         </Scroll>
+
         <RobotModel section={section} />
         <Office section={section} />
         <RobotModelClone section={section} />

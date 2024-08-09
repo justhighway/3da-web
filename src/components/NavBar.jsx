@@ -1,11 +1,18 @@
-import MenuButton from "./Menu/MenuButton";
+import MenuButton from "./menu/MenuButton";
 
-const NavBar = ({ onSectionChange, isMenuOpened, setIsMenuOpened }) => {
+export default function NavBar({
+  onSectionChange,
+  isMenuOpened,
+  setIsMenuOpened,
+}) {
   return (
-    <nav className="fixed top-0 left-0 z-20 w-full px-20 py-8">
-      <div className="container flex items-center justify-between mx-auto">
+    <nav className="fixed top-0 left-0 z-20 w-full py-8 bg-blue-500 px-14">
+      <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img
+            onClick={() => {
+              onSectionChange(0);
+            }}
             src="/src/assets/logo.png"
             alt="logo"
             className="h-8 cursor-pointer"
@@ -19,6 +26,4 @@ const NavBar = ({ onSectionChange, isMenuOpened, setIsMenuOpened }) => {
       </div>
     </nav>
   );
-};
-
-export default NavBar;
+}

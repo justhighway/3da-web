@@ -4,9 +4,9 @@ import { useEffect } from "react";
 export default function useSceneRotationLeva(sceneRef) {
   // Leva controls for scene rotation
   const { rotationX, rotationY, rotationZ } = useControls({
-    rotationX: { value: 0, min: -Math.PI, max: Math.PI, step: 0.01 },
-    rotationY: { value: -0.3, min: -Math.PI, max: Math.PI, step: 0.01 },
-    rotationZ: { value: 0, min: -Math.PI, max: Math.PI, step: 0.01 },
+    rotationX: { value: 0, min: -Math.PI, max: Math.PI, step: 0.001 },
+    rotationY: { value: 0, min: -Math.PI, max: Math.PI, step: 0.001 },
+    rotationZ: { value: 0, min: -Math.PI, max: Math.PI, step: 0.001 },
   });
 
   useEffect(() => {

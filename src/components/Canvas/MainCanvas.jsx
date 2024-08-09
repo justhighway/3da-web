@@ -3,12 +3,9 @@ import { Canvas } from "@react-three/fiber";
 import ResponsiveCanvas from "./ResponsiveCanvas";
 import MainScene from "@components/MainScene";
 import Lights from "@components/Lights";
-import { Leva } from "leva";
-import useCameraPositionLeva from "@hooks/useCameraPositionLeva";
-import useCameraRotationLeva from "@hooks/useCameraRotationLeva";
 import NavBar from "@components/NavBar";
-import { MotionConfig } from "framer-motion";
 import { OrbitControls } from "@react-three/drei";
+import CameraController from "@components/CameraController";
 
 const MainCanvas = () => {
   const [section, setSection] = useState(0);
@@ -16,7 +13,6 @@ const MainCanvas = () => {
 
   return (
     <div className="w-screen h-screen overflow-hidden">
-      <Leva collapsed={false} />
       <Canvas
         gl={{ antialias: true }}
         shadows={"soft"}
@@ -24,15 +20,14 @@ const MainCanvas = () => {
           fov: 60,
           near: 0.1,
           far: 1000,
-          position: [0, 0, 4],
+          position: [0, 0, 4], // 초기 카메라 위치
         }}
       >
         <Lights />
         <MainScene section={section} setSection={setSection} />
-        <gridHelper />
         <ResponsiveCanvas />
-        <CameraController />
-        <OrbitControls />
+        <CameraController section={section} />
+        {/* <OrbitControls /> */}
       </Canvas>
       <NavBar
         onSectionChange={setSection}
@@ -41,12 +36,6 @@ const MainCanvas = () => {
       />
     </div>
   );
-};
-
-const CameraController = () => {
-  useCameraPositionLeva();
-  useCameraRotationLeva();
-  return null;
 };
 
 export default MainCanvas;
