@@ -1,4 +1,4 @@
-import MenuButton from "./menu/MenuButton";
+import MenuButton from "./Menu/MenuButton";
 
 export default function NavBar({
   onSectionChange,
@@ -6,7 +6,7 @@ export default function NavBar({
   setIsMenuOpened,
 }) {
   return (
-    <nav className="fixed top-0 left-0 z-20 w-full py-8 bg-blue-500 px-14">
+    <nav className="fixed top-0 left-0 z-20 w-full py-8 px-14">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img

@@ -4,7 +4,6 @@ import ResponsiveCanvas from "./ResponsiveCanvas";
 import MainScene from "@components/MainScene";
 import Lights from "@components/Lights";
 import NavBar from "@components/NavBar";
-import { OrbitControls } from "@react-three/drei";
 import CameraController from "@components/CameraController";
 
 const MainCanvas = () => {
@@ -20,7 +19,7 @@ const MainCanvas = () => {
           fov: 60,
           near: 0.1,
           far: 1000,
-          position: [0, 0, 4], // 초기 카메라 위치
+          position: [0, 0, 4],
         }}
       >
         <Lights />
