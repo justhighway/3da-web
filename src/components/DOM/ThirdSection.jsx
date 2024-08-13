@@ -1,20 +1,30 @@
 import Section from "./Section";
+import { motion } from "framer-motion";
 
 export default function ThirdSection() {
   return (
-    <Section position="center" hasMotion={false}>
-      <h1 className="text-5xl font-bold">About Us</h1>
-      <span className="mt-4 text-lg">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget
-        nullam non. Quis hendrerit dolor magna eget est lorem ipsum dolor sit.
-        Volutpat odio facilisis mauris sit amet massa. Commodo odio aenean sed
-        adipiscing diam donec adipiscing tristique. Mi eget mauris pharetra et.
-        Non tellus orci ac auctor augue. Elit at imperdiet dui accumsan sit.
-        Ornare arcu dui vivamus arcu felis. Egestas integer eget aliquet nibh
-        praesent. In hac habitasse platea dictumst quisque sagittis purus.
-        Pulvinar elementum integer enim neque volutpat ac.
-      </span>
+    <Section
+      size="large"
+      position="right"
+      hasMotion={true}
+      initial={{ opacity: 0, scale: 0.1 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 2, duration: 1 }}
+      onAnimationComplete={() => console.log("Animation Completed")}
+    >
+      <motion.h1 className="text-5xl font-bold drop-shadow-lg">
+        회사소개3
+      </motion.h1>
+      <motion.span className="mt-4 text-lg drop-shadow-md">
+        회사소개멘트 회사소개멘트 회사소개멘트 회사소개멘트 회사소개멘트
+        회사소개멘트
+        회사소개멘트회사소개멘트회사소개멘트회사소개멘트회사소개멘트
+        회사소개멘트회사소개멘트회사소개멘트회사소개멘트회사소개멘트
+        회사소개멘트회사소개멘트회사소개멘트회사소개멘트회사소개멘트
+        회사소개멘트회사소개멘트회사소개멘트회사소개멘트회사소개멘트
+        회사소개멘트회사소개멘트회사소개멘트회사소개멘트회사소개멘트
+        회사소개멘트회사소개멘트회사소개멘트회사소개멘트회사소개멘트
+      </motion.span>
     </Section>
   );
 }

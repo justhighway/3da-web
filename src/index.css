@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-outline-black {
+  -webkit-text-stroke: 2px black; /* Stroke width and color */
+  color: white; /* Text fill color */
+}
+
+.text-outline-white {
+  -webkit-text-stroke: 2px white; /* Stroke width and color */
+  color: black; /* Text fill color */
+}
+
+.text-outline-blue {
+  -webkit-text-stroke: 1px white; /* Stroke width and color */
+  color: rgb(20, 20, 90); /* Text fill color */
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

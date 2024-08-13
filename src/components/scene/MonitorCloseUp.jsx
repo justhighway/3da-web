@@ -12,9 +12,21 @@ export default function MonitorCloseUp({ section }) {
   const groupRef = useRef(null);
   const tl = useRef(null); // useRef로 변경
 
+  // 애니메이션이 시작하고 끝나는 스크롤 범위 설정
+  const startScroll = 0.1; // 30% 지점에서 애니메이션 시작
+  const endScroll = 0.7; // 70% 지점에서 애니메이션 종료
+
   useFrame(() => {
     if (tl.current) {
-      tl.current.seek(scrollData.offset * tl.current.duration());
+      // 스크롤 오프셋을 설정한 범위로 클램핑
+      const clampedOffset = Math.min(
+        Math.max(
+          (scrollData.offset - startScroll) / (endScroll - startScroll),
+          0
+        ),
+        1
+      );
+      tl.current.seek(clampedOffset * tl.current.duration());
     }
   });
 
@@ -37,8 +49,7 @@ export default function MonitorCloseUp({ section }) {
             duration: 4,
             y: -1,
           },
-          "<",
-          3
+          "<"
         );
     }
 

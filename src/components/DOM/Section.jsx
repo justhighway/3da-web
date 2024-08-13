@@ -1,12 +1,38 @@
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Section({
   size = "large",
   position = "left",
   hasMotion = true,
   children,
+  initial,
+  animate,
+  exit,
+  whileHover,
+  whileTap,
+  whileDrag,
+  whileFocus,
+  whileInView,
+  transition,
+  drag,
+  dragConstraints,
+  dragElastic,
+  dragMomentum,
+  dragPropagation,
+  dragTransition,
+  layout,
+  layoutId,
+  onAnimationComplete,
+  onAnimationStart,
+  onDrag,
+  onDragEnd,
+  onDragStart,
+  onHoverEnd,
+  onHoverStart,
+  onTap,
+  viewport,
 }) {
   const widthClass = classNames({
     "flex w-[100vw]": size === "large",
@@ -18,6 +44,7 @@ export default function Section({
     "items-start": position === "left",
     "items-center": position === "center",
     "items-end": position === "right",
+    "ml-auto": position === "right", // Ensures the section aligns to the right
   });
 
   const commonProps = {
@@ -26,13 +53,32 @@ export default function Section({
 
   const motionProps = hasMotion
     ? {
-        initial: { opacity: 0, y: 50 },
-        whileInView: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 1, delay: 0.4 },
-        },
-        viewport: { once: true },
+        initial,
+        animate,
+        exit,
+        whileHover,
+        whileTap,
+        whileDrag,
+        whileFocus,
+        whileInView,
+        transition,
+        drag,
+        dragConstraints,
+        dragElastic,
+        dragMomentum,
+        dragPropagation,
+        dragTransition,
+        layout,
+        layoutId,
+        onAnimationComplete,
+        onAnimationStart,
+        onDrag,
+        onDragEnd,
+        onDragStart,
+        onHoverEnd,
+        onHoverStart,
+        onTap,
+        viewport,
       }
     : {};
 
@@ -49,5 +95,31 @@ Section.propTypes = {
   size: PropTypes.oneOf(["large", "medium", "small"]),
   position: PropTypes.oneOf(["left", "center", "right"]),
   hasMotion: PropTypes.bool,
+  initial: PropTypes.object,
+  animate: PropTypes.object,
+  exit: PropTypes.object,
+  whileHover: PropTypes.object,
+  whileTap: PropTypes.object,
+  whileDrag: PropTypes.object,
+  whileFocus: PropTypes.object,
+  whileInView: PropTypes.object,
+  transition: PropTypes.object,
+  drag: PropTypes.bool,
+  dragConstraints: PropTypes.object,
+  dragElastic: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  dragMomentum: PropTypes.bool,
+  dragPropagation: PropTypes.bool,
+  dragTransition: PropTypes.object,
+  layout: PropTypes.bool,
+  layoutId: PropTypes.string,
+  onAnimationComplete: PropTypes.func,
+  onAnimationStart: PropTypes.func,
+  onDrag: PropTypes.func,
+  onDragEnd: PropTypes.func,
+  onDragStart: PropTypes.func,
+  onHoverEnd: PropTypes.func,
+  onHoverStart: PropTypes.func,
+  onTap: PropTypes.func,
+  viewport: PropTypes.object,
   children: PropTypes.node.isRequired,
 };
