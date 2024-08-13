@@ -4,8 +4,8 @@ import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import Office from "./Office";
-import RobotModelClone from "./RobotModelClone";
+import OfficeRoom from "./OfficeRoom";
+import RobotModel from "./RobotModel";
 
 export default function MonitorCloseUp({ section }) {
   const scrollData = useScroll();
@@ -29,7 +29,7 @@ export default function MonitorCloseUp({ section }) {
             z: 3.3,
             x: -1.2,
           },
-          2.5
+          1.5
         )
         .to(
           groupRef.current.rotation,
@@ -37,7 +37,8 @@ export default function MonitorCloseUp({ section }) {
             duration: 4,
             y: -1,
           },
-          "<"
+          "<",
+          3
         );
     }
 
@@ -50,8 +51,8 @@ export default function MonitorCloseUp({ section }) {
 
   return (
     <group ref={groupRef}>
-      <Office section={section} />
-      <RobotModelClone section={section} />
+      <OfficeRoom section={section} />
+      <RobotModel section={section} />
     </group>
   );
 }

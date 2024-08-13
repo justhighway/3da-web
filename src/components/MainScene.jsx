@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
+
 import { Scroll, ScrollControls } from "@react-three/drei";
 import ScrollManager from "./ScrollManager";
 import Interface from "./DOM/Interface";
-import RobotModel from "./Scene/RobotModel";
 import MonitorCloseUp from "./Scene/MonitorCloseUp";
 
 export default function MainScene({ section, setSection }) {
@@ -12,8 +13,6 @@ export default function MainScene({ section, setSection }) {
         <Scroll html>
           <Interface />
         </Scroll>
-
-        <RobotModel section={section} />
         <MonitorCloseUp section={section} />
       </ScrollControls>
     </>

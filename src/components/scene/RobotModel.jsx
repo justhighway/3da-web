@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 
 import { useGLTF } from "@react-three/drei";
@@ -6,26 +7,30 @@ import { motion } from "framer-motion-3d";
 
 export default function RobotModel({ section }) {
   const robotRef = useRef(null);
-  const { scene } = useGLTF("models/samdol.glb");
+  const { scene } = useGLTF("models/robot.glb");
 
   return (
     <motion.group
       ref={robotRef}
-      initial={{ scale: 4, y: -10 }}
+      initial={{
+        z: -1.5,
+        y: 10,
+      }}
       animate={{
-        y: section === 1 ? 0 : 0,
-        rotateY: section === 1 ? [0, Math.PI / 2] : [0, 0],
-        x: section === 1 ? 10 : 0,
-        opacity: section === 0 ? 1 : 0,
+        y: section === 1 ? 0.9 : 1,
+        rotateY: section === 1 ? Math.PI : Math.PI / 4.6,
       }}
       transition={{
-        y: { duration: 1.5, type: "spring" },
-        rotateY: { duration: 1.5, type: "spring" },
-        x: { duration: 1.5, type: "spring", delay: 0.3 },
+        duration: 1.5,
+        type: "spring",
       }}
     >
-      <primitive object={scene} position={[0.3, 0, 0]} />
-      <axesHelper args={[10]} />
+      <primitive
+        object={scene}
+        scale={2}
+        position={[0, 0, 0]}
+        rotation={[-0.08, 0, 0.03]}
+      />
     </motion.group>
   );
 }

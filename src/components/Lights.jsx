@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 
-import { useHelper } from "@react-three/drei";
 import { useRef } from "react";
-import * as THREE from "three";
+// import * as THREE from "three";
+// import { useHelper } from "@react-three/drei";
 
 export default function Lights() {
   const lightRef = useRef();
-  useHelper(lightRef, THREE.DirectionalLightHelper, 3, 0xffff00);
+  // useHelper(lightRef, THREE.DirectionalLightHelper, 3, 0xffff00);
   // useHelper(lightRef, THREE.PointLightHelper, 2, 0xffff00);
   return (
     <>
@@ -15,7 +15,7 @@ export default function Lights() {
         ref={lightRef}
         castShadow
         args={[0xffffff, 5]}
-        position={[-4, 5, 8]}
+        position={[-5, 10, 5]}
         shadow-camera-left={-25}
         shadow-camera-right={25}
         shadow-camera-top={25}

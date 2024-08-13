@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import MenuButton from "./Menu/MenuButton";
 
 export default function NavBar({

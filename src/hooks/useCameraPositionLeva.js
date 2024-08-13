@@ -6,9 +6,9 @@ export default function useCameraPositionLeva() {
   const { camera } = useThree();
 
   const [positionControls, setPositionControls] = useControls(() => ({
-    cameraX: { value: camera.position.x, min: -50, max: 50 },
-    cameraY: { value: camera.position.y, min: -50, max: 50 },
-    cameraZ: { value: camera.position.z, min: -50, max: 50 },
+    cameraX: { value: camera.position.x, min: -10, max: 10, step: 0.01 },
+    cameraY: { value: camera.position.y, min: -10, max: 10, step: 0.01 },
+    cameraZ: { value: camera.position.z, min: -10, max: 10, step: 0.01 },
   }));
 
   // OrbitControls에서 카메라 위치 값이 변경될 때 Leva 컨트롤을 업데이트
