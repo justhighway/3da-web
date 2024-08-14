@@ -41,7 +41,7 @@ export default function MonitorCloseUp({ section }) {
             z: 3.3,
             x: -1.2,
           },
-          1.5
+          1
         )
         .to(
           groupRef.current.rotation,
@@ -64,6 +64,7 @@ export default function MonitorCloseUp({ section }) {
     <group ref={groupRef}>
       <OfficeRoom section={section} />
       <RobotModel section={section} />
+      <axesHelper />
     </group>
   );
 }

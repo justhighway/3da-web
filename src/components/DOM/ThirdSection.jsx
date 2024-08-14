@@ -10,6 +10,7 @@ export default function ThirdSection() {
       initial={{ opacity: 0, scale: 0.1 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 2, duration: 1 }}
+      onAnimationStart={() => console.log("Animation Start")}
       onAnimationComplete={() => console.log("Animation Completed")}
     >
       <motion.h1 className="text-5xl font-bold drop-shadow-lg">

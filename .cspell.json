@@ -1,3 +1,5 @@
+// "Unknown word" lint 에러 제외 단어
+
 {
   "words": ["gsap", "GLTF", "drei"]
 }
