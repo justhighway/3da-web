@@ -13,8 +13,8 @@ export default function MonitorCloseUp({ section }) {
   const tl = useRef(null); // useRef로 변경
 
   // 애니메이션이 시작하고 끝나는 스크롤 범위 설정
-  const startScroll = 0.1; // 30% 지점에서 애니메이션 시작
-  const endScroll = 0.7; // 70% 지점에서 애니메이션 종료
+  const startScroll = 0.1; // 애니메이션 시작 지점
+  const endScroll = 1; // 애니메이션 종료 지점
 
   useFrame(() => {
     if (tl.current) {
@@ -31,26 +31,50 @@ export default function MonitorCloseUp({ section }) {
   });
 
   useEffect(() => {
-    tl.current = gsap.timeline();
+    tl.current = gsap.timeline({
+      paused: true, // 타임라인을 일시 정지 상태로 시작
+    });
+
     if (tl.current) {
-      tl.current
-        .to(
-          groupRef.current.position,
-          {
-            duration: 4,
-            z: 3.3,
-            x: -1.2,
-          },
-          1
-        )
-        .to(
-          groupRef.current.rotation,
-          {
-            duration: 4,
-            y: -1,
-          },
-          "<"
-        );
+      // 섹션 2에 해당하는 애니메이션 설정
+      tl.current.to(
+        groupRef.current.position,
+        {
+          duration: 4,
+          z: 3.3,
+          x: -1.2,
+        },
+        1
+      );
+
+      tl.current.to(
+        groupRef.current.rotation,
+        {
+          duration: 4,
+          y: -1,
+        },
+        "<"
+      );
+
+      // 섹션 3에도 동일한 애니메이션 적용
+      tl.current.to(
+        groupRef.current.position,
+        {
+          duration: 4,
+          z: 3.3, // 섹션 2의 z값과 동일하게 유지
+          x: -1.2, // 섹션 2의 x값과 동일하게 유지
+        },
+        5 // 섹션 3 시작 시점을 타임라인에서 설정
+      );
+
+      tl.current.to(
+        groupRef.current.rotation,
+        {
+          duration: 4,
+          y: -1, // 섹션 2의 회전값과 동일하게 유지
+        },
+        "<"
+      );
     }
 
     return () => {

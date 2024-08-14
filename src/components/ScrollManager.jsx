@@ -16,7 +16,7 @@ export default function ScrollManager({ section, onSectionChange }) {
   }, [scrollData.fill]);
 
   useEffect(() => {
-    if (scrollData.el) {
+    if (scrollData.el && (section === 0 || section === 1)) {
       gsap.to(scrollData.el, {
         duration: 1,
         scrollTop: section * scrollData.el.clientHeight,
@@ -40,17 +40,16 @@ export default function ScrollManager({ section, onSectionChange }) {
       scrollData.scroll.current * scrollData.pages
     );
 
-    if (
-      scrollData.scroll.current > lastScroll.current &&
-      currentSection === 0
-    ) {
-      onSectionChange(1);
-    }
-    if (
-      scrollData.scroll.current < lastScroll.current &&
-      currentSection === 0
-    ) {
-      onSectionChange(0);
+    if (currentSection === 0) {
+      if (scrollData.scroll.current > lastScroll.current) {
+        onSectionChange(1);
+      } else if (scrollData.scroll.current < lastScroll.current) {
+        onSectionChange(0);
+      }
+    } else {
+      if (currentSection !== section) {
+        onSectionChange(currentSection);
+      }
     }
 
     lastScroll.current = scrollData.scroll.current;

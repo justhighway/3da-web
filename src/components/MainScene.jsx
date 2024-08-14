@@ -8,7 +8,7 @@ import MonitorCloseUp from "./Scene/MonitorCloseUp";
 export default function MainScene({ section, setSection }) {
   return (
     <>
-      <ScrollControls pages={6} damping={0.1}>
+      <ScrollControls pages={10} damping={0.1}>
         <ScrollManager section={section} onSectionChange={setSection} />
         <Scroll html>
           <Interface />

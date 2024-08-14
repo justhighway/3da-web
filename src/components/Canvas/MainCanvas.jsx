@@ -4,11 +4,12 @@ import ResponsiveCanvas from "./ResponsiveCanvas";
 import MainScene from "@components/MainScene";
 import Lights from "@components/Lights";
 import NavBar from "@components/NavBar";
-import CameraAnimation from "@components/CameraAnimation";
 
 const MainCanvas = () => {
   const [section, setSection] = useState(0);
   const [isMenuOpened, setIsMenuOpened] = useState(false);
+
+  console.log(section);
 
   return (
     <div className="w-screen h-screen">

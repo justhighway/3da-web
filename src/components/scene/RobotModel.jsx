@@ -9,28 +9,38 @@ export default function RobotModel({ section }) {
   const robotRef = useRef(null);
   const { scene } = useGLTF("models/robot.glb");
 
+  // 애니메이션 값을 초기화
+  let y = 0;
+  let scale = 6;
+  let rotateY = Math.PI / 4.6;
+
+  // 섹션 1일 때 조건적으로 값을 변경
+  if (section >= 1) {
+    y = 0.9;
+    scale = 2;
+    rotateY = Math.PI;
+  }
+
   return (
     <motion.group
       ref={robotRef}
       initial={{
         z: -1.5,
         y: 10,
+        scale: 6,
       }}
       animate={{
-        y: section === 1 ? 0.9 : 1,
-        rotateY: section === 1 ? Math.PI : Math.PI / 4.6,
+        y: y,
+        scale: scale,
+        rotateY: rotateY,
       }}
       transition={{
-        duration: 1.5,
+        duration: 0.8,
         type: "spring",
+        damping: 25,
       }}
     >
-      <primitive
-        object={scene}
-        scale={2}
-        position={[0, 0, 0]}
-        rotation={[-0.08, 0, 0.03]}
-      />
+      <primitive object={scene} rotation={[-0.08, 0, 0.03]} />
     </motion.group>
   );
 }

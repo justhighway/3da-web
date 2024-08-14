@@ -1,4 +1,5 @@
 import FirstSection from "./FirstSection";
+import SwiperSection from "./SwiperSection";
 import SecondSection from "./SecondSection";
 import Section from "./Section";
 import ThirdSection from "./ThirdSection";
@@ -8,13 +9,10 @@ export default function Interface() {
     <div>
       <FirstSection />
       <SecondSection />
-      {/* <Section>
-        <h1>사업</h1>
-      </Section> */}
       <ThirdSection />
-      <Section hasMotion={false}>
-        <h1>연락</h1>
-      </Section>
+      <SecondSection />
+      <ThirdSection />
+      <SwiperSection />
       <Section>
         <h1>등등</h1>
       </Section>

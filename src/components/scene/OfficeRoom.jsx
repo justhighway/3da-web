@@ -9,18 +9,31 @@ export default function OfficeRoom({ section }) {
   const officeRoomRef = useRef(null);
   const { scene } = useGLTF("scenes/officeRoom.glb");
 
+  // 애니메이션 초기 값 설정
+  let scale = 0;
+  let y = -20;
+  let opacity = 0;
+
+  // 섹션 1일 때 애니메이션 값 변경
+  if (section >= 1) {
+    scale = 1;
+    y = 0;
+    opacity = 1;
+  }
+
   return (
     <motion.group
       ref={officeRoomRef}
       animate={{
-        scale: section === 1 ? 1 : 0,
-        y: section === 1 ? 0 : -20,
-        opacity: section === 1 ? 1 : 0,
+        scale: scale,
+        y: y,
+        opacity: opacity,
       }}
       transition={{
-        duration: 1.5,
-        restDelta: 0.00001,
         type: "spring",
+        damping: 25,
+        duration: 0.8,
+        restDelta: 0.00001,
       }}
     >
       <primitive
