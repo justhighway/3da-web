@@ -4,6 +4,7 @@ import ResponsiveCanvas from "./ResponsiveCanvas";
 import MainScene from "@components/MainScene";
 import Lights from "@components/Lights";
 import NavBar from "@components/NavBar";
+import { OrbitControls } from "@react-three/drei";
 
 const MainCanvas = () => {
   const [section, setSection] = useState(0);

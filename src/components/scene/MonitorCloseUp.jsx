@@ -6,6 +6,8 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import OfficeRoom from "./OfficeRoom";
 import RobotModel from "./RobotModel";
+import useCameraPositionLeva from "@hooks/useCameraPositionLeva";
+import useCameraRotationLeva from "@hooks/useCameraRotationLeva";
 
 export default function MonitorCloseUp({ section }) {
   const scrollData = useScroll();
@@ -15,6 +17,9 @@ export default function MonitorCloseUp({ section }) {
   // 애니메이션이 시작하고 끝나는 스크롤 범위 설정
   const startScroll = 0.1; // 애니메이션 시작 지점
   const endScroll = 1; // 애니메이션 종료 지점
+
+  useCameraPositionLeva();
+  useCameraRotationLeva();
 
   useFrame(() => {
     if (tl.current) {
@@ -41,40 +46,40 @@ export default function MonitorCloseUp({ section }) {
         groupRef.current.position,
         {
           duration: 4,
-          z: 3.3,
-          x: -1.2,
+          z: 5,
+          x: 2,
         },
         1
       );
 
-      tl.current.to(
-        groupRef.current.rotation,
-        {
-          duration: 4,
-          y: -1,
-        },
-        "<"
-      );
+      // tl.current.to(
+      //   groupRef.current.rotation,
+      //   {
+      //     duration: 4,
+      //     y: -1,
+      //   },
+      //   "<"
+      // );
 
       // 섹션 3에도 동일한 애니메이션 적용
       tl.current.to(
         groupRef.current.position,
         {
           duration: 4,
-          z: 3.3, // 섹션 2의 z값과 동일하게 유지
-          x: -1.2, // 섹션 2의 x값과 동일하게 유지
+          z: 5, // 섹션 2의 z값과 동일하게 유지
+          x: 2, // 섹션 2의 x값과 동일하게 유지
         },
         5 // 섹션 3 시작 시점을 타임라인에서 설정
       );
 
-      tl.current.to(
-        groupRef.current.rotation,
-        {
-          duration: 4,
-          y: -1, // 섹션 2의 회전값과 동일하게 유지
-        },
-        "<"
-      );
+      // tl.current.to(
+      //   groupRef.current.rotation,
+      //   {
+      //     duration: 4,
+      //     y: -1, // 섹션 2의 회전값과 동일하게 유지
+      //   },
+      //   "<"
+      // );
     }
 
     return () => {
