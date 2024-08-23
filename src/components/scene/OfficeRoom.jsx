@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 
-import { useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 import { motion } from "framer-motion-3d";
 
 export default function OfficeRoom({ section }) {
   const officeRoomRef = useRef(null);
-  const { scene } = useGLTF("scenes/officeRoom.glb");
+  const noteRef = useRef(null);
+  const office = useGLTF("scenes/officeRoom.glb");
+  const note = useGLTF("models/stickyNotes.glb");
 
   // 애니메이션 초기 값 설정
   let scale = 0;
@@ -39,8 +41,15 @@ export default function OfficeRoom({ section }) {
       <primitive
         castShadow
         receiveShadow
-        object={scene}
+        object={office.scene}
         scale={1}
+        position={[0, 0, 0]}
+      />
+      <primitive
+        castShadow
+        receiveShadow
+        object={note.scene}
+        scale={5}
         position={[0, 0, 0]}
       />
     </motion.group>

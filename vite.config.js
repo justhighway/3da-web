@@ -6,6 +6,9 @@ const __dirname = path.resolve();
 
 export default defineConfig({
   plugins: [react()],
+  optimizeDeps: {
+    entries: [],
+  },
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "src/components"),

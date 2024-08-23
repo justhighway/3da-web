@@ -3,20 +3,15 @@
 import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import useCameraPositionLeva from "@hooks/useCameraPositionLeva";
-import useCameraRotationLeva from "@hooks/useCameraRotationLeva";
 
 const CameraController = ({ section }) => {
   const { camera } = useThree();
 
-  useCameraPositionLeva();
-  useCameraRotationLeva();
-
   useEffect(() => {
     const cameraPositions = [
-      { x: 0, y: 0, z: 0 }, // section 0
-      { x: 2.17, y: 2.96, z: 1.94 }, // section 1
-      { x: 2.17, y: 2.96, z: 1.94 }, // section 2
+      { x: 0, y: 0, z: 2 }, // section 0
+      { x: 0, y: 0, z: 0 }, // section 1
+      { x: 0, y: 0, z: 0 }, // section 2
       { x: 0, y: 0, z: 0 }, // section 3
       { x: 0, y: 0, z: 0 }, // section 4
       { x: 0, y: 0, z: 0 }, // section 5
@@ -27,8 +22,8 @@ const CameraController = ({ section }) => {
 
     const cameraRotations = [
       { x: 0, y: 0, z: 0 }, // section 0
-      { x: -0.3, y: 0.78, z: 0.1 }, // section 1
-      { x: -0.3, y: 0.78, z: 0.1 }, // section 2
+      { x: 0, y: 10, z: 0 }, // section 1
+      { x: 0, y: 0, z: 0 }, // section 2
       { x: 0, y: 0, z: 0 }, // section 3
       { x: 0, y: 0, z: 0 }, // section 4
       { x: 0, y: 0, z: 0 }, // section 5

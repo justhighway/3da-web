@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import ResponsiveCanvas from "./ResponsiveCanvas";
-import MainScene from "@components/MainScene";
 import Lights from "@components/Lights";
 import NavBar from "@components/NavBar";
-import { OrbitControls } from "@react-three/drei";
+import MainScene from "@components/MainScene";
+import { Environment, Sky } from "@react-three/drei";
 
 const MainCanvas = () => {
   const [section, setSection] = useState(0);
@@ -21,11 +21,12 @@ const MainCanvas = () => {
           fov: 60,
           near: 0.1,
           far: 1000,
-          position: [2.17, 2.96, 1.94],
-          rotation: [-0.3, 0.78, 0.24],
+          position: [0, 0, 0],
+          rotation: [0, 0, 0],
         }}
       >
         <Lights />
+        <Environment preset="night" />
         <ResponsiveCanvas />
         <MainScene section={section} setSection={setSection} />
       </Canvas>
