@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
@@ -9,50 +7,33 @@ import Samdol from "./Samdol";
 import * as THREE from "three";
 
 export default function MonitorCloseUp({ section }) {
-  const scrollData = useScroll();
-  console.log("scrollData: ", scrollData.offset);
-  const groupRef = useRef(null);
-  const tl = useRef(null);
-  const { camera } = useThree();
+  const scrollData = useScroll(); // 스크롤 데이터를 가져오는 훅
+  const groupRef = useRef(null); // 애니메이션 적용 대상 그룹에 대한 참조
+  const tl = useRef(null); // GSAP 타임라인에 대한 참조
+  const { camera } = useThree(); // 현재 씬의 카메라 객체에 접근
 
-  // 애니메이션이 시작하고 끝나는 offset 설정
   const startScroll = 0.05;
-  const endScroll = 1;
-
-  useFrame(() => {
-    if (tl.current) {
-      const clampedOffset = Math.min(
-        Math.max(
-          (scrollData.offset - startScroll) / (endScroll - startScroll),
-          0
-        ),
-        1
-      );
-      tl.current.seek(clampedOffset * tl.current.duration());
-    }
-  });
+  const endScroll = 0.4; // 민감도를 높이기 위해 endScroll을 줄임
 
   useEffect(() => {
     tl.current = gsap.timeline({ paused: true });
 
-    // 1-1. 왼쪽 모니터로 확대 (동시)
+    // 왼쪽 모니터로 확대하는 애니메이션
     tl.current.to(
       groupRef.current.position,
       {
-        duration: 1,
         z: 7.3,
         x: -2,
         y: -1.24,
-        ease: "power3.out", // 부드러운 종료를 위해 power3.out 사용
+        ease: "power3.out", // 애니메이션의 속도 곡선 설정
       },
-      0 // 타임라인의 시작 부분에서 애니메이션 시작
+      0
     );
 
-    // 1-2. 왼쪽 모니터 확대 시 회전 (동시)
+    // 왼쪽 모니터로 확대 시 회전 애니메이션
     tl.current.to(
       camera.rotation,
       {
-        duration: 1, // 회전 지속 시간을 늘려서 부드럽게
         y: THREE.MathUtils.degToRad(36),
         x: THREE.MathUtils.degToRad(21.2),
         z: THREE.MathUtils.degToRad(-1),
@@ -61,11 +42,10 @@ export default function MonitorCloseUp({ section }) {
       "<"
     );
 
-    // 2. 왼쪽 모니터 오른쪽으로 이동 (속도 증가)
+    // 왼쪽 모니터를 오른쪽으로 이동
     tl.current.to(
       groupRef.current.position,
       {
-        duration: 2.5, // 애니메이션 속도를 높이기 위해 duration을 줄임
         z: 8,
         x: -3,
         y: -1.5,
@@ -74,24 +54,21 @@ export default function MonitorCloseUp({ section }) {
       ">"
     );
 
-    // 3-1. 오른쪽 모니터로 이동 (매끄럽게 전환)
+    // 오른쪽 모니터로 이동 및 회전 애니메이션
     tl.current.to(
       groupRef.current.position,
       {
-        duration: 1.8, // 더 빠른 전환을 위해 duration을 줄임
         z: 8,
         x: -4.2,
         y: -1.4,
         ease: "power1.inOut",
       },
-      ">-0.5" // 2번 애니메이션이 끝나기 직전에 3번 애니메이션 시작
+      ">"
     );
 
-    // 3-2. 오른쪽 모니터로 회전 (매끄럽게 전환)
     tl.current.to(
       camera.rotation,
       {
-        duration: 1.8, // 더 빠른 전환을 위해 duration을 줄임
         y: THREE.MathUtils.degToRad(4),
         x: THREE.MathUtils.degToRad(20),
         z: THREE.MathUtils.degToRad(0.1),
@@ -100,17 +77,17 @@ export default function MonitorCloseUp({ section }) {
       "<"
     );
 
-    // 오른쪽 모니터 확대1
+    // 오른쪽 모니터로 확대
     tl.current.to(
       groupRef.current.position,
       {
-        duration: 2, // 최종 이동에서 더 긴 지속 시간을 사용하여 부드럽게
+        duration: 1,
         z: 10,
-        x: -3.8,
+        x: -3.6,
         y: -2,
         ease: "power3.inOut",
       },
-      "<+2"
+      ">"
     );
 
     return () => {
@@ -119,6 +96,27 @@ export default function MonitorCloseUp({ section }) {
       }
     };
   }, [camera]);
+
+  useFrame(() => {
+    if (tl.current) {
+      // 스크롤 위치에 따른 애니메이션 위치를 계산
+      const clampedOffset = Math.min(
+        Math.max(
+          (scrollData.offset - startScroll) / (endScroll - startScroll),
+          0
+        ),
+        1
+      );
+      // 스크롤 반응성을 높이기 위해 offset을 강화
+      const easedOffset = gsap.utils.interpolate(0, 1, clampedOffset * 1.5);
+
+      // 남은 애니메이션을 유지하도록 타임라인 위치 업데이트
+      tl.current.tweenTo(easedOffset * tl.current.duration(), {
+        ease: "power3.out",
+        duration: 0.5, // 애니메이션이 지속되는 시간을 설정
+      });
+    }
+  });
 
   return (
     <group ref={groupRef}>
