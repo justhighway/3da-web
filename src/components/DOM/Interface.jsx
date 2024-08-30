@@ -1,5 +1,4 @@
 import FirstSection from "./FirstSection";
-import CustomSection from "./CustomSection";
 import SecondSection from "./SecondSection";
 import ThirdSection from "./ThirdSection";
 

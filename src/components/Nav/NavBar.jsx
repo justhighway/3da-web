@@ -55,7 +55,7 @@ export default function NavBar({
             onClick={() => {
               onSectionChange(0); // 로고 클릭 시 섹션을 첫 번째로 이동
             }}
-            src="/src/assets/logo.png" // 로고 이미지 경로
+            src="/assets/logo.png" // 로고 이미지 경로
             alt="logo"
             className="h-8 cursor-pointer" // 클릭 가능한 로고 이미지 스타일
           />
