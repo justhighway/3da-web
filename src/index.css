@@ -2,21 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.text-outline-black {
-  -webkit-text-stroke: 2px black; /* Stroke width and color */
-  color: white; /* Text fill color */
-}
+/* 
+ * 기본 스타일 초기화 및 유틸리티 클래스 적용.
+ * 
+ * TailwindCSS의 세 가지 주요 구성 요소를 가져옵니다:
+ * - base: 기본 요소에 대한 초기화 스타일을 정의합니다.
+ * - components: 사전에 정의된 UI 구성 요소 스타일을 포함합니다.
+ * - utilities: TailwindCSS 유틸리티 클래스를 통해 신속한 스타일링이 가능합니다.
+ */
 
-.text-outline-white {
-  -webkit-text-stroke: 2px white; /* Stroke width and color */
-  color: black; /* Text fill color */
-}
-
-.text-outline-blue {
-  -webkit-text-stroke: 1px white; /* Stroke width and color */
-  color: rgb(20, 20, 90); /* Text fill color */
-}
-
+/* 
+ * 기본 웹킷 스크롤바 숨김.
+ * 
+ * 사용자 경험을 개선하기 위해 웹킷 기반 브라우저에서 기본 스크롤바를 숨깁니다.
+ * 예를 들어, 페이지의 미적 요소를 손상시키지 않으면서도 스크롤 기능을 유지할 수 있습니다.
+ */
 ::-webkit-scrollbar {
   display: none;
 }

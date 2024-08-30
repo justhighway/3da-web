@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 
 import {
   Environment,
   MeshPortalMaterial,
-  OrbitControls,
   Plane,
   Sphere,
   useTexture,
@@ -26,13 +26,10 @@ export default function Portal({ section }) {
       easing.damp(
         portalRef.current,
         "blend",
-        section >= 13 ? 1 : 0,
+        section >= 21 ? 1 : 0,
         0.3,
         delta
       );
-      console.log("현재 blend 값:", portalRef.current.blend);
-    } else {
-      console.log("portalRef.current is null");
     }
   });
 

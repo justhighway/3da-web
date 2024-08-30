@@ -1,5 +1,5 @@
-import CustomButton from "@components/CustomButton";
-import Section from "./Section";
+import CustomButton from "@components/DOM/CustomButton";
+import Section from "./CustomSection";
 import { motion } from "framer-motion";
 
 export default function FirstSection() {

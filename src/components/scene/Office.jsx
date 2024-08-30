@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 
 import { useGLTF } from "@react-three/drei";
@@ -140,12 +141,19 @@ export default function Office({ section, ...props }) {
       </motion.mesh>
 
       <motion.mesh
-        initial={{ y: section !== 0 ? 20 : 1.3, z: 2.1, rotateY: Math.PI }}
-        animate={{ y: section !== 0 ? 1.3 : 10 }}
+        initial={{
+          y: section === 0 ? 20 : 1.3, // section이 0일 때는 객체를 화면 밖에 배치
+          opacity: section === 0 ? 0 : 1, // section이 0일 때는 숨김
+          z: 2.1,
+          rotateY: Math.PI,
+        }}
+        animate={{
+          y: section >= 1 ? 1.3 : 10, // section이 1일 때만 화면에 위치
+          opacity: section === 1 ? 1 : 0, // section이 1일 때만 보이도록 설정
+        }}
         transition={{
           duration: 0.8,
           ease: [0.42, 0, 0.58, 1],
-          delay: section === 1 ? 1 : 0,
         }}
       >
         <primitive object={samdol1} scale={2} castShadow receiveShadow />
